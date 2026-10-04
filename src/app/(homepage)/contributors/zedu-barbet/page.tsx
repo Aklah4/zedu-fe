@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Github } from "lucide-react";
+import { ContributorCard } from "./_components/ContributorCard";
+import { contributors } from "./_lib/contributors";
 
 export const metadata: Metadata = {
   title: "Zedu Barbet Contributors",
@@ -8,38 +9,6 @@ export const metadata: Metadata = {
     canonical: "/contributors/zedu-barbet",
   },
 };
-
-const contributors = [
-  { name: "Emmanuel Aklah", github: "Aklah4" },
-  { name: "Modupe Adenuga", github: "msnuga" },
-  { name: "Godstime Okoene", github: "GGStyles" },
-  { name: "Kenechukwu Modebelu", github: "KennyMod" },
-  { name: "Eyitene Ejiro", github: "ejiro-eyitene" },
-  { name: "Ubeh-sylvanus Izuchukwu", github: "anonymous-cybe" },
-  { name: "Janet Okedoyin", github: "bimbzzyjane" },
-  { name: "Mgboawaji Williamson", github: "codeWithGodstime" },
-  { name: "Uduma Ifechukwu", github: "UI-Light" },
-  { name: "Abdulsalam Abdulmuiz Olalekan", github: "Iampeace001" },
-  { name: "Jinadu-Paul Oluwatamilore", github: "TammyCodes29" },
-  { name: "Chimdike John", github: "cdJohnEl" },
-  { name: "Adebukola, Jonah", github: "b26-netizen" },
-  { name: "Rabiah Usman", github: "rabiah4u" },
-  { name: "Adisa Abubakr", github: "adisa-ade", role: "Team Lead" },
-  { name: "Adedoyin Ogunsola", github: "adegram" },
-  { name: "Okafor Uriel", github: "blackoin-studio" },
-  { name: "Adole Peter", github: "padole" },
-  { name: "Jeffers Doherty", github: "thetundedoherty" },
-  { name: "Ebenezer Amakato", github: "Ebenezer96" },
-];
-
-const getInitials = (name: string) =>
-  name
-    .split(/[ ,]+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
 
 export default function ZeduBarbetContributorsPage() {
   return (
@@ -60,39 +29,10 @@ export default function ZeduBarbetContributorsPage() {
 
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {contributors.map((contributor) => (
-            <li
+            <ContributorCard
               key={contributor.github}
-              className="flex min-h-36 flex-col justify-between gap-5 rounded-lg border border-neutral-200 bg-white p-5 transition-colors hover:border-primary-300"
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  aria-hidden="true"
-                  className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-50 text-sm font-semibold text-primary-500"
-                >
-                  {getInitials(contributor.name)}
-                </span>
-                <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
-                  <h2 className="text-base font-semibold leading-snug text-neutral-900">
-                    {contributor.name}
-                  </h2>
-                  {contributor.role && (
-                    <span className="rounded-sm bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900">
-                      {contributor.role}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <a
-                href={`https://github.com/${contributor.github}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-fit items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-500"
-                aria-label={`${contributor.name} on GitHub, opens in a new tab`}
-              >
-                <Github aria-hidden="true" className="size-4" />
-                {contributor.github}
-              </a>
-            </li>
+              contributor={contributor}
+            />
           ))}
         </ul>
       </section>
