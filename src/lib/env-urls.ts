@@ -104,6 +104,10 @@ export function xUrl(): string {
   return readEnv("NEXT_PUBLIC_X_URL");
 }
 
+export function githubUrl(): string {
+  return readEnv("NEXT_PUBLIC_GITHUB_URL");
+}
+
 /** npm package root for emoji-datasource-apple (no trailing slash). */
 export function appleEmojiDatasourceBaseUrl(): string {
   return readEnv("NEXT_PUBLIC_EMOJI_DATASOURCE_URL");

@@ -1,4 +1,5 @@
 import { Github } from "lucide-react";
+import { githubUrl } from "~/lib/env-urls";
 import type { Contributor } from "../_lib/contributors";
 
 function getInitials(name: string): string {
@@ -33,7 +34,7 @@ export function ContributorCard({ contributor }: { contributor: Contributor }) {
         </div>
       </div>
       <a
-        href={`https://github.com/${contributor.github}`}
+        href={`${githubUrl()}/${contributor.github}`}
         target="_blank"
         rel="noreferrer"
         className="inline-flex w-fit items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-500"
