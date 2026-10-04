@@ -100,7 +100,8 @@ const MenuDropdown = ({ isOpen, onClose }: MenuDropdownProps) => {
               Export
             </div>
 
-            <div
+            <button
+              type="button"
               className={menuItemClass}
               onClick={() => {
                 dispatch({
@@ -111,7 +112,7 @@ const MenuDropdown = ({ isOpen, onClose }: MenuDropdownProps) => {
               }}
             >
               Search
-            </div>
+            </button>
 
             {canManageChannels ? (
               <div

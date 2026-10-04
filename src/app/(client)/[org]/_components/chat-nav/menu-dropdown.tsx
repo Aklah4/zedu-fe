@@ -142,7 +142,8 @@ const MenuDropdown = ({ isOpen, onClose, participants }: MenuDropdownProps) => {
               Pinned Message
             </div>
 
-            <div
+            <button
+              type="button"
               className={menuItemClass}
               onClick={() => {
                 dispatch({
@@ -153,7 +154,7 @@ const MenuDropdown = ({ isOpen, onClose, participants }: MenuDropdownProps) => {
               }}
             >
               Search
-            </div>
+            </button>
 
             <div className={dividerClass} />
 
